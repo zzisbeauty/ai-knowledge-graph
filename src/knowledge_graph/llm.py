@@ -54,7 +54,7 @@ def call_llm(model, user_prompt, api_key, system_prompt=None, max_tokens=1000, t
         headers=headers,
         json=payload
     )
-    
+
     if response.status_code == 200:
         return response.json()['choices'][0]['message']['content']
     else:

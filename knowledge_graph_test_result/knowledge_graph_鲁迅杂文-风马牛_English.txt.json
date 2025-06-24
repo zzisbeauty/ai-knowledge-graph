@@ -1,0 +1,254 @@
+[
+  {
+    "subject": "zhaohjingshen",
+    "predicate": "advocates",
+    "object": "shun_without_belief",
+    "chunk": 1
+  },
+  {
+    "subject": "zhaohjingshen",
+    "predicate": "introduces",
+    "object": "guowaiwentanxiuzhong",
+    "chunk": 1
+  },
+  {
+    "subject": "guowaiwentanxiuzhong",
+    "predicate": "is",
+    "object": "either_translated_or_self_researched",
+    "chunk": 1
+  },
+  {
+    "subject": "a_layoop",
+    "predicate": "is_mis-translation_of",
+    "object": "life_and_love_among_the_acrobats_told_entirely_in_pictures",
+    "chunk": 1
+  },
+  {
+    "subject": "gropper",
+    "predicate": "translates",
+    "object": "a_layoop",
+    "chunk": 1
+  },
+  {
+    "subject": "derzentaur",
+    "predicate": "is",
+    "object": "german",
+    "chunk": 1
+  },
+  {
+    "subject": "niucailu",
+    "predicate": "is_mis-translation_of",
+    "object": "milky_way",
+    "chunk": 1
+  },
+  {
+    "subject": "fengmashen",
+    "predicate": "references",
+    "object": "zhoubian",
+    "chunk": 1
+  },
+  {
+    "subject": "fengmashen",
+    "predicate": "is_metaphor_for",
+    "object": "unrelated_things",
+    "chunk": 1
+  },
+  {
+    "subject": "guowaiwentanxiuzhong",
+    "predicate": "is_column_in",
+    "object": "xiaoshuoyuebao",
+    "chunk": 1
+  },
+  {
+    "subject": "thiess",
+    "predicate": "completes",
+    "object": "four_part_work",
+    "chunk": 1
+  },
+  {
+    "subject": "derzentaur",
+    "predicate": "is",
+    "object": "centaur",
+    "chunk": 1
+  },
+  {
+    "subject": "jiaomenhua",
+    "predicate": "is",
+    "object": "german",
+    "chunk": 1
+  },
+  {
+    "subject": "fankei",
+    "predicate": "is_mis-translation_of",
+    "object": "milky_way",
+    "chunk": 1
+  },
+  {
+    "subject": "a_layoop",
+    "predicate": "is_about",
+    "object": "acrobats",
+    "chunk": 1
+  },
+  {
+    "subject": "either_translated_or_self_researched",
+    "predicate": "is_related_to",
+    "object": "a_layoop",
+    "inferred": true
+  },
+  {
+    "subject": "xiaoshuoyuebao",
+    "predicate": "is_related_to",
+    "object": "acrobats",
+    "inferred": true
+  },
+  {
+    "subject": "derzentaur",
+    "predicate": "is involved in",
+    "object": "either_translated_or_self_researched",
+    "inferred": true
+  },
+  {
+    "subject": "centaur",
+    "predicate": "is related to",
+    "object": "shun_without_belief",
+    "inferred": true
+  },
+  {
+    "subject": "jiaomenhua",
+    "predicate": "is involved in",
+    "object": "guowaiwentanxiuzhong",
+    "inferred": true
+  },
+  {
+    "subject": "either_translated_or_self_researched",
+    "predicate": "related_to",
+    "object": "niucailu",
+    "inferred": true
+  },
+  {
+    "subject": "shun_without_belief",
+    "predicate": "connected_to",
+    "object": "fankei",
+    "inferred": true
+  },
+  {
+    "subject": "shun_without_belief",
+    "predicate": "is metaphor for",
+    "object": "unrelated_things",
+    "inferred": true
+  },
+  {
+    "subject": "either_translated_or_self_researched",
+    "predicate": "is related to",
+    "object": "unrelated_things",
+    "inferred": true
+  },
+  {
+    "subject": "xiaoshuoyuebao",
+    "predicate": "references",
+    "object": "zhoubian",
+    "inferred": true
+  },
+  {
+    "subject": "acrobats",
+    "predicate": "related to",
+    "object": "centaur",
+    "inferred": true
+  },
+  {
+    "subject": "life_and_love_among_the_acrobats_told_entirely_in_pictures",
+    "predicate": "related to",
+    "object": "german",
+    "inferred": true
+  },
+  {
+    "subject": "a_layoop",
+    "predicate": "mis-translation-of",
+    "object": "niucailu",
+    "inferred": true
+  },
+  {
+    "subject": "acrobats",
+    "predicate": "related_to",
+    "object": "milky_way",
+    "inferred": true
+  },
+  {
+    "subject": "acrobats",
+    "predicate": "are metaphor for",
+    "object": "unrelated_things",
+    "inferred": true
+  },
+  {
+    "subject": "a_layoop",
+    "predicate": "is metaphor for",
+    "object": "fengmashen",
+    "inferred": true
+  },
+  {
+    "subject": "centaur",
+    "predicate": "related_to",
+    "object": "milky_way",
+    "inferred": true
+  },
+  {
+    "subject": "german",
+    "predicate": "related_to",
+    "object": "milky_way",
+    "inferred": true
+  },
+  {
+    "subject": "centaur",
+    "predicate": "references",
+    "object": "zhoubian",
+    "inferred": true
+  },
+  {
+    "subject": "derzentaur",
+    "predicate": "is metaphor for",
+    "object": "fengmashen",
+    "inferred": true
+  },
+  {
+    "subject": "fankei",
+    "predicate": "is metaphor for",
+    "object": "unrelated_things",
+    "inferred": true
+  },
+  {
+    "subject": "fengmashen",
+    "predicate": "references",
+    "object": "milky_way",
+    "inferred": true
+  },
+  {
+    "subject": "zhaohjingshen",
+    "predicate": "introduces via guowaiwentanxiuzhong",
+    "object": "either_translated_or_self_researched",
+    "inferred": true
+  },
+  {
+    "subject": "zhaohjingshen",
+    "predicate": "introduces via guowaiwentanxiuzhong",
+    "object": "xiaoshuoyuebao",
+    "inferred": true
+  },
+  {
+    "subject": "gropper",
+    "predicate": "translates via a_layoop",
+    "object": "life_and_love_among_the_acrobats_told_entirely_in_pictures",
+    "inferred": true
+  },
+  {
+    "subject": "gropper",
+    "predicate": "translates via a_layoop",
+    "object": "acrobats",
+    "inferred": true
+  },
+  {
+    "subject": "life_and_love_among_the_acrobats_told_entirely_in_pictures",
+    "predicate": "is type of",
+    "object": "acrobats",
+    "inferred": true
+  }
+]

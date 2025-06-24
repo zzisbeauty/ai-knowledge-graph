@@ -14,6 +14,7 @@ from src.knowledge_graph.llm import call_llm, extract_json_from_text
 from src.knowledge_graph.visualization import visualize_knowledge_graph, sample_data_visualization
 from src.knowledge_graph.text_utils import chunk_text
 from src.knowledge_graph.entity_standardization import standardize_entities, infer_relationships, limit_predicate_length
+# from src.knowledge_graph.prompts_en_ori import MAIN_SYSTEM_PROMPT, MAIN_USER_PROMPT
 from src.knowledge_graph.prompts import MAIN_SYSTEM_PROMPT, MAIN_USER_PROMPT
 
 def process_with_llm(config, input_text, debug=False):
@@ -202,15 +203,20 @@ def main():
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Knowledge Graph Generator and Visualizer')
     parser.add_argument('--test', action='store_true', help='Generate a test visualization with sample data')
-    parser.add_argument('--config', type=str, default='config.toml', help='Path to configuration file')
+    parser.add_argument('--config', type=str, default='/home/ai-knowledge-graph/config.toml', help='Path to configuration file')
     parser.add_argument('--output', type=str, default='knowledge_graph.html', help='Output HTML file path')
-    parser.add_argument('--input', type=str, required=False, help='Path to input text file (required unless --test is used)')
+    parser.add_argument(
+        '--input', type=str, required=False, 
+        # default='/home/ai-knowledge-graph/docs/鲁迅杂文-风马牛.txt',
+        default='/home/ai-knowledge-graph/docs/hlm-demo.txt',
+        help='Path to input text file (required unless --test is used)'
+    )
     parser.add_argument('--debug', action='store_true', help='Enable debug output (raw LLM responses and extracted JSON)')
     parser.add_argument('--no-standardize', action='store_true', help='Disable entity standardization')
     parser.add_argument('--no-inference', action='store_true', help='Disable relationship inference')
     
     args = parser.parse_args()
-    
+
     # Load configuration
     config = load_config(args.config)
     if not config:

@@ -3,7 +3,7 @@ import re
 from collections import defaultdict
 from src.knowledge_graph.llm import call_llm
 from src.knowledge_graph.prompts import (
-    ENTITY_RESOLUTION_SYSTEM_PROMPT, 
+    ENTITY_RESOLUTION_SYSTEM_PROMPT,
     get_entity_resolution_user_prompt,
     RELATIONSHIP_INFERENCE_SYSTEM_PROMPT,
     get_relationship_inference_user_prompt,
@@ -14,11 +14,9 @@ from src.knowledge_graph.prompts import (
 def limit_predicate_length(predicate, max_words=3):
     """
     Enforce a maximum word limit on predicates.
-    
     Args:
         predicate: The original predicate string
         max_words: Maximum number of words allowed (default: 3)
-        
     Returns:
         Shortened predicate with no more than max_words
     """
@@ -40,11 +38,9 @@ def limit_predicate_length(predicate, max_words=3):
 def standardize_entities(triples, config):
     """
     Standardize entity names across all triples.
-    
     Args:
         triples: List of dictionaries with 'subject', 'predicate', and 'object' keys
         config: Configuration dictionary
-        
     Returns:
         List of triples with standardized entity names
     """
@@ -190,11 +186,9 @@ def standardize_entities(triples, config):
 def infer_relationships(triples, config):
     """
     Infer additional relationships between entities to reduce isolated communities.
-    
     Args:
         triples: List of dictionaries with standardized entity names
         config: Configuration dictionary
-        
     Returns:
         List of triples with additional inferred relationships
     """
