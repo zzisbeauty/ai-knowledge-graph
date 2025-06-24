@@ -6,3 +6,6 @@ lib/
 
 *.egg-info
 __pycache__
+
+
+/knowledge_graph_test_result
