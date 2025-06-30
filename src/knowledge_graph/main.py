@@ -231,13 +231,13 @@ def main():
         print(f"To view the visualization, open the following file in your browser:")
         print(f"file://{os.path.abspath(args.output)}")
         return
-    
+
     # For normal processing, input file is required
     if not args.input:
         print("Error: --input is required unless --test is used")
         parser.print_help()
         return
-    
+
     # Override configuration settings with command line arguments
     if args.no_standardize:
         config.setdefault("standardization", {})["enabled"] = False
