@@ -13,5 +13,4 @@ sys.path.insert(0, current_dir)
 from src.knowledge_graph.main import main
 
 if __name__ == "__main__":
-    # Pass command line arguments to the main function
     main()

@@ -204,11 +204,11 @@ def main():
     parser = argparse.ArgumentParser(description='Knowledge Graph Generator and Visualizer')
     parser.add_argument('--test', action='store_true', help='Generate a test visualization with sample data')
     parser.add_argument('--config', type=str, default='/home/ai-knowledge-graph/config.toml', help='Path to configuration file')
-    parser.add_argument('--output', type=str, default='knowledge_graph.html', help='Output HTML file path')
+    parser.add_argument('--output', type=str, default='如何用LangGraph打造Web Research多智能体系统-graph.html', help='Output HTML file path')
     parser.add_argument(
         '--input', type=str, required=False, 
         # default='/home/ai-knowledge-graph/docs/鲁迅杂文-风马牛.txt',
-        default='/home/ai-knowledge-graph/docs/hlm-demo.txt',
+        default='/home/ai-knowledge-graph/data/如何用LangGraph打造Web Research多智能体系统.html',
         help='Path to input text file (required unless --test is used)'
     )
     parser.add_argument('--debug', action='store_true', help='Enable debug output (raw LLM responses and extracted JSON)')
@@ -278,6 +278,9 @@ def main():
         print(f"file://{os.path.abspath(args.output)}")
     else:
         print("Knowledge graph generation failed due to errors in LLM processing.")
+
+
+
 
 if __name__ == "__main__":
     main() 

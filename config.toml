@@ -1,14 +1,23 @@
 [llm]
 #model = "gemma3"
-model = "qwen3:4b"
+#model = "qwen3:4b"
 #model = "claude-3.5-sonnet-v2"
-#model = "gpt4o"
 #model = "llama3-2-90b-instruct-v1:0"
 
-api_key = "sk-1234"
+# ollama
 #base_url = "http://localhost:11434/v1/chat/completions"
-base_url = "http://10.30.30.97:11434/v1/chat/completions"
-#base_url = "http://localhost:4000/v1/chat/completions"
+
+# yi api
+model = "gpt-4o-mini"
+api_key = "sk-wuTITomWJ5hVYsVb304d3f94Ec144e3bAa5eCc11Ff6aA0E9"
+base_url = "https://vip.apiyi.com/v1/chat/completions"
+
+
+# Alibaba
+#model = "qwen-plus"
+#api_key = "sk-da4935959a9b46c88a60d8c3f416d334"
+#base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
 
 max_tokens = 8192
 #max_tokens = 4096
