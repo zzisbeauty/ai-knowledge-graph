@@ -207,8 +207,9 @@ def main():
     parser.add_argument('--output', type=str, default='knowledge_graph.html', help='Output HTML file path')
     parser.add_argument(
         '--input', type=str, required=False, 
-        default='/home/ai-knowledge-graph/data/industrial-revolution.cn.txt',
+        default='./now_data.txt',
         # default='/home/ai-knowledge-graph/data/红楼梦.txt',
+        # default='/home/ai-knowledge-graph/data/industrial-revolution.cn.txt',
         help='Path to input text file (required unless --test is used)'
     )
     parser.add_argument('--debug', action='store_true', help='Enable debug output (raw LLM responses and extracted JSON)')
@@ -278,6 +279,10 @@ def main():
         print(f"file://{os.path.abspath(args.output)}")
     else:
         print("Knowledge graph generation failed due to errors in LLM processing.")
+
+
+
+
 
 if __name__ == "__main__":
     main() 

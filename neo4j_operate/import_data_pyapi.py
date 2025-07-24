@@ -33,8 +33,10 @@ def import_triples_dynamic_rel(triples):
             )
 
 
+
 if __name__ == "__main__":
-    data = load_data("./data_graph_generate_result/gygm_graph.json")
+    # data = load_data("./data_graph_generate_result/gygm_graph.json")
+    data = load_data("/home/git/ai-knowledge-graph/knowledge_graph.json")
     import_triples_dynamic_rel(data)
     driver.close()
 
@@ -58,5 +60,7 @@ MERGE (s)-[r:REL {type: value.predicate}]->(o)
 
 
 - 其他数据集
+
+...
 
 """

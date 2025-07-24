@@ -1,2 +1,0 @@
-- 专门处理 neo4j 操作
-- 应在 conda env ai-kg 下运行，否则连不上 neo4j
