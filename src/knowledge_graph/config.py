@@ -5,10 +5,8 @@ import os
 def load_config(config_file="config.toml"):
     """
     Load configuration from TOML file.
-    
     Args:
         config_file: Path to the TOML configuration file
-        
     Returns:
         Dictionary containing the configuration or None if loading fails
     """

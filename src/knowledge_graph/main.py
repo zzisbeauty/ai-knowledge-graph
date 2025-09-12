@@ -89,59 +89,45 @@ def process_with_llm(config, input_text, debug=False):
         return None
 
 def process_text_in_chunks(config, full_text, debug=False):
-    """
-    Process a large text by breaking it into chunks with overlap,
-    and then processing each chunk separately.
-    
+    """ Process a large text by breaking it into chunks with overlap, and then processing each chunk separately.
     Args:
         config: Configuration dictionary
         full_text: The complete text to process
         debug: If True, print detailed debug information
-    
     Returns:
         List of all extracted triples from all chunks
     """
     # Get chunking parameters from config
     chunk_size = config.get("chunking", {}).get("chunk_size", 500)
     overlap = config.get("chunking", {}).get("overlap", 50)
-    
     # Split text into chunks
-    text_chunks = chunk_text(full_text, chunk_size, overlap)
-    
+    text_chunks = chunk_text(full_text, chunk_size, overlap)[:10]
     print("=" * 50)
     print("PHASE 1: INITIAL TRIPLE EXTRACTION")
     print("=" * 50)
     print(f"Processing text in {len(text_chunks)} chunks (size: {chunk_size} words, overlap: {overlap} words)")
-    
     # Process each chunk
     all_results = []
     for i, chunk in enumerate(text_chunks):
         print(f"Processing chunk {i+1}/{len(text_chunks)} ({len(chunk.split())} words)")
-        
         # Process the chunk with LLM
         chunk_results = process_with_llm(config, chunk, debug)
-        
         if chunk_results:
             # Add chunk information to each triple
             for item in chunk_results:
                 item["chunk"] = i + 1
-            
             # Add to overall results
             all_results.extend(chunk_results)
         else:
             print(f"Warning: Failed to extract triples from chunk {i+1}")
-    
     print(f"\nExtracted a total of {len(all_results)} triples from all chunks")
-    
     # Apply entity standardization if enabled
     if config.get("standardization", {}).get("enabled", False):
         print("\n" + "="*50)
         print("PHASE 2: ENTITY STANDARDIZATION")
         print("="*50)
         print(f"Starting with {len(all_results)} triples and {len(get_unique_entities(all_results))} unique entities")
-        
         all_results = standardize_entities(all_results, config)
-        
         print(f"After standardization: {len(all_results)} triples and {len(get_unique_entities(all_results))} unique entities")
     
     # Apply relationship inference if enabled
@@ -150,41 +136,32 @@ def process_text_in_chunks(config, full_text, debug=False):
         print("PHASE 3: RELATIONSHIP INFERENCE")
         print("="*50)
         print(f"Starting with {len(all_results)} triples")
-        
         # Count existing relationships
         relationship_counts = {}
         for triple in all_results:
             relationship_counts[triple["predicate"]] = relationship_counts.get(triple["predicate"], 0) + 1
-        
         print("Top 5 relationship types before inference:")
         for pred, count in sorted(relationship_counts.items(), key=lambda x: x[1], reverse=True)[:5]:
             print(f"  - {pred}: {count} occurrences")
-        
         all_results = infer_relationships(all_results, config)
-        
         # Count relationships after inference
         relationship_counts_after = {}
         for triple in all_results:
             relationship_counts_after[triple["predicate"]] = relationship_counts_after.get(triple["predicate"], 0) + 1
-        
         print("\nTop 5 relationship types after inference:")
         for pred, count in sorted(relationship_counts_after.items(), key=lambda x: x[1], reverse=True)[:5]:
             print(f"  - {pred}: {count} occurrences")
-        
         # Count inferred relationships
         inferred_count = sum(1 for triple in all_results if triple.get("inferred", False))
         print(f"\nAdded {inferred_count} inferred relationships")
         print(f"Final knowledge graph: {len(all_results)} triples")
-    
     return all_results
 
+
 def get_unique_entities(triples):
-    """
-    Get the set of unique entities from the triples.
-    
+    """ Get the set of unique entities from the triples.
     Args:
         triples: List of triple dictionaries
-        
     Returns:
         Set of unique entity names
     """
@@ -198,24 +175,25 @@ def get_unique_entities(triples):
             entities.add(triple["object"])
     return entities
 
+
 def main():
-    """Main entry point for the knowledge graph generator."""
+    """ Main entry point for the knowledge graph generator.
+    """
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Knowledge Graph Generator and Visualizer')
     parser.add_argument('--test', action='store_true', help='Generate a test visualization with sample data')
-    parser.add_argument('--config', type=str, default='/home/ai-knowledge-graph/config.toml', help='Path to configuration file')
+    # parser.add_argument('--config', type=str, default='/home/ai-knowledge-graph/config.toml', help='Path to configuration file') # hw  21 server config
+    parser.add_argument('--config', type=str, default='/app/config.toml', help='Path to configuration file') # ubuntu
     parser.add_argument('--output', type=str, default='knowledge_graph.html', help='Output HTML file path')
     parser.add_argument(
         '--input', type=str, required=False, 
-        default='./now_data.txt',
-        # default='/home/ai-knowledge-graph/data/红楼梦.txt',
-        # default='/home/ai-knowledge-graph/data/industrial-revolution.cn.txt',
+        default='./data/红楼梦.txt',
+        # default='./data/now_data.txt',
         help='Path to input text file (required unless --test is used)'
     )
     parser.add_argument('--debug', action='store_true', help='Enable debug output (raw LLM responses and extracted JSON)')
     parser.add_argument('--no-standardize', action='store_true', help='Disable entity standardization')
     parser.add_argument('--no-inference', action='store_true', help='Disable relationship inference')
-    
     args = parser.parse_args()
 
     # Load configuration
@@ -256,7 +234,7 @@ def main():
     
     # Process text in chunks
     result = process_text_in_chunks(config, input_text, args.debug)
-    
+
     if result:
         # Save the raw data as JSON for potential reuse
         json_output = args.output.replace('.html', '.json')
@@ -273,7 +251,7 @@ def main():
         print(f"Nodes: {stats['nodes']}")
         print(f"Edges: {stats['edges']}")
         print(f"Communities: {stats['communities']}")
-        
+
         # Provide command to open the visualization in a browser
         print("\nTo view the visualization, open the following file in your browser:")
         print(f"file://{os.path.abspath(args.output)}")

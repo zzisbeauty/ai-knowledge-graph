@@ -1,16 +1,21 @@
 [llm]
-#model = "gemma3"
-model = "qwen3:4b"
-#model = "claude-3.5-sonnet-v2"
+#model = "Qwen3-4B-Thinking"  # ubuntu model server
+model = "Qwen3-4B-Instruct-2507" # ubuntu model server
+#model = "gemma3"model = "qwen3:4b" # hw 21 ollama model
+# other model
 #model = "gpt4o"
+#model = "claude-3.5-sonnet-v2"
 #model = "llama3-2-90b-instruct-v1:0"
+
+
 
 api_key = "sk-1234"
 #base_url = "http://localhost:11434/v1/chat/completions"
-base_url = "http://10.30.30.97:11434/v1/chat/completions"
+#base_url = "http://10.30.30.97:11434/v1/chat/completions"  # hw ollama
 #base_url = "http://localhost:4000/v1/chat/completions"
+base_url = "http://192.168.1.6:8001/v1/chat/completions" # # ubuntu lf llm server
 
-max_tokens = 8192
+max_tokens = 300000
 #max_tokens = 4096
 temperature = 0.8
 
