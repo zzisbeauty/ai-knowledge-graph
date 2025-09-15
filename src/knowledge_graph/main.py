@@ -183,7 +183,7 @@ def main():
     parser = argparse.ArgumentParser(description='Knowledge Graph Generator and Visualizer')
     parser.add_argument('--test', action='store_true', help='Generate a test visualization with sample data')
     # parser.add_argument('--config', type=str, default='/home/ai-knowledge-graph/config.toml', help='Path to configuration file') # hw  21 server config
-    parser.add_argument('--config', type=str, default='/app/config.toml', help='Path to configuration file') # ubuntu
+    parser.add_argument('--config', type=str, default='/workspace/config.toml', help='Path to configuration file') # ubuntu
     parser.add_argument('--output', type=str, default='knowledge_graph.html', help='Output HTML file path')
     parser.add_argument(
         '--input', type=str, required=False, 
@@ -194,10 +194,15 @@ def main():
     parser.add_argument('--debug', action='store_true', help='Enable debug output (raw LLM responses and extracted JSON)')
     parser.add_argument('--no-standardize', action='store_true', help='Disable entity standardization')
     parser.add_argument('--no-inference', action='store_true', help='Disable relationship inference')
+
+    # 添加 neo4j 数据库参数
+    parser.add_argument('--neo4j', action='store_true', help='Export to Neo4j database')  
+    parser.add_argument('--no-neo4j', action='store_true', help='Disable Neo4j export')
     args = parser.parse_args()
 
     # Load configuration
     config = load_config(args.config)
+    
     if not config:
         print(f"Failed to load configuration from {args.config}. Exiting.")
         return
@@ -255,6 +260,24 @@ def main():
         # Provide command to open the visualization in a browser
         print("\nTo view the visualization, open the following file in your browser:")
         print(f"file://{os.path.abspath(args.output)}")
+
+
+        """添加Neo4j导出，在Neo4j中，建议使用以下数据模型，根据抽取得到的 json 的设定：
+        节点标签: Entity 用于所有实体
+        关系类型: RELATION 作为通用关系类型
+        关系属性:
+            type: 存储原始的predicate值
+            chunk: 来源文本块
+            inferred: 是否为推理关系
+        """
+    
+        if config.get("neo4j", {}).get("enabled", False):  
+            from src.knowledge_graph.neo4j_export import export_to_neo4j  
+            try:  
+                export_to_neo4j(result, config["neo4j"])  
+                print("Successfully exported to Neo4j database")  
+            except Exception as e:  
+                print(f"Error exporting to Neo4j: {e}")
     else:
         print("Knowledge graph generation failed due to errors in LLM processing.")
 

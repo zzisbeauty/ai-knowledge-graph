@@ -13,6 +13,7 @@ dependencies = [
     "tomli>=2.2.1",
     "python-louvain>=0.16",
     "jieba>=0.42.1",
+    "neo4j>=5.28.2",
 ]
 
 [build-system]

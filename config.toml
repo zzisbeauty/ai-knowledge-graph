@@ -35,3 +35,11 @@ apply_transitive = true    # Whether to apply transitive inference rules
 [visualization]
 edge_smooth = false # Options: false, "dynamic", "continuous", "discrete", "diagonalCross", 
                     # "straightCross", "horizontal", "vertical", "curvedCW", "curvedCCW", "cubicBezier": true = "continuous"
+
+
+
+[neo4j]  
+enabled = true  
+uri = "bolt://localhost:7687"
+username = "neo4j"  
+password = "aa1230.aa2"
